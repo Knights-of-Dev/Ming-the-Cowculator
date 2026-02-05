@@ -1,0 +1,4 @@
+All commands:
+- help
+- calc
+- exit
