@@ -1,0 +1,12 @@
+
+___________________________________
+/ Moooo! Want some funny cows to say  \\
+| something  in your Python program?  |
+\\ Install the 'cowsay'  module today! /
+  -----------------------------------
+         \   ^__^ 
+          \  (oo)\_______
+             (__)\       )\/\\
+                 ||----w |
+                 ||     ||
+
