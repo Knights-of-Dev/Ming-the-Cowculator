@@ -15,7 +15,7 @@ def space(num: int):
     p("")
 
 def printext(w: str):
-  with open(w, 'r') as f :
+  with open(w, 'r', encoding='utf-8', errors='ignore') as f :
     print(f.read())
 
 def ad():
