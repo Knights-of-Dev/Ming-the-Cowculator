@@ -118,3 +118,4 @@ while command != "exit!":
   if random.randint(0, 2) == 1: p("Mooooo!")
 
 print("thank you for using MING!")
+wait(1)
