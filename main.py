@@ -66,7 +66,7 @@ while command != "exit!":
           case "help":
             printext("help.txt")
           case "info":
-            printext('info.txt')
+            printext('about.txt')
           case "calc":
             mode = "calc"
             p("calculator mode!")
@@ -98,7 +98,7 @@ while command != "exit!":
         one = float(input("give me the first number >>> "))
         two = float(input("give me the second number >>> "))
         modekey = ["undefined", "ADD", "SUBTRACT", "DIVIDE", "MULTIPLY"]
-        if random.randint(0, 1) == 1:
+        if (random.randint(0, 1) == 1) or (one == two):
           p(f"Hmm. It seems that your current mode is {modekey[int(cmode)]}. Did you mean to do {modekey[random.randint(1, 4)]}?")
           sleep(2)
         else:
