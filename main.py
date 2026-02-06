@@ -25,6 +25,7 @@ def ad():
   texts = [f for f in all if f.endswith('.txt')]
   ads = len(texts)
   printext(f"ads/ad{random.randint(1, ads)}.txt")
+  print("")
   p("---== AD BREAK INITIALIZED ==---")
   p("You may continue your program in 5")
   wait(1)
@@ -48,21 +49,21 @@ mode = "home"
 already = False
 
 while command != "exit!":
-  if random.randint(0, 4) == 1: ad()
-  if random.randint(0, 2) == 1: p("Mooooo!")
-  if random.randint(0, 5) == 5 and already:
+  if random.randint(0, 3) == 3 and already:
     print("I don't feel like sending that right now.")
   else:
     match mode:
       case "home":
         already = True
-        command = str(input(">>> "))
-        if random.randint(0, 1) == 1: ad()
+        command = str(input("home>>> "))
         match command:
           case "help":
             printext("help.txt")
+          case "info":
+            printext('info.txt')
           case "calc":
             mode = "calc"
+            p("calculator mode!")
           case "exit":
             ad()
             break
@@ -77,7 +78,7 @@ while command != "exit!":
   5: exit
   6: 67!!!
   7: 67!!!""")
-        command = str(input(">>> "))
+        command = str(input("calculator>>> "))
         if command == "6" or command == "7":
           for x in range(random.randint(10, 100)): p("67!!")
         elif command == "5": mode = "home"
@@ -91,7 +92,7 @@ while command != "exit!":
         one = float(input("give me the first number >>> "))
         two = float(input("give me the second number >>> "))
         modekey = ["undefined", "ADD", "SUBTRACT", "DIVIDE", "MULTIPLY"]
-        if random.randint(0, 2) == 2:
+        if random.randint(0, 1) == 1:
           p(f"Hmm. It seems that your current mode is {modekey[int(cmode)]}. Did you mean to do {modekey[random.randint(1, 4)]}?")
           sleep(2)
         else:
@@ -113,5 +114,7 @@ while command != "exit!":
           mode = "home"
       case _:
         p("wtf")
+  if random.randint(0, 4) == 1: ad()
+  if random.randint(0, 2) == 1: p("Mooooo!")
 
 print("thank you for using MING!")

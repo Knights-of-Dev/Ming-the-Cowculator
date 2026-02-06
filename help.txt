@@ -1,4 +1,5 @@
 All commands:
 - help
 - calc
+- info
 - exit

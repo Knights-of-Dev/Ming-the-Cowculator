@@ -1,0 +1,20 @@
+┌———————————————————————————————————————┐
+│                                       │
+│  MMMMMMMMMMMMMM                       │
+│  M""""""""""`YM oo                    │
+│  M  mm.  mm.  M                       │
+│  M  MMM  MMM  M dP 88d888b. .d8888b.  │
+│  M  MMM  MMM  M 88 88'  `88 88'  `88  │
+│  M  MMM  MMM  M 88 88    88 88.  .88  │
+│  M  MMM  MMM  M dP dP    dP `8888P88  │
+│  MMMMMMMMMMMMMM                  .88  │
+│                              d8888P   │
+│                                       │
+└———————————————————————————————————————┘
+
+MING version 2026-02
+🄯 2026 Knights of Dev
+All rights reserved
+
+MING is a free-to-use, open-source Python experiment developed by O9Creeps.
+Any part of this publication can be used and downloaded free of charge.
