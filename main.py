@@ -2,13 +2,17 @@ import random
 from time import sleep
 import os
 
-
+global ads
+adsallow = False
 
 def p(j):
   print(j)
 
 def wait(n: int):
   sleep(n)
+
+def waitf(h: float):
+  sleep(h)
 
 def space(num: int):
   for x in range(0, num):
@@ -19,26 +23,28 @@ def printext(w: str):
     print(f.read())
 
 def ad():
-  space(15)
-  ads = 0
-  all = os.listdir("ads")
-  texts = [f for f in all if f.endswith('.txt')]
-  ads = len(texts)
-  printext(f"ads/ad{random.randint(1, ads)}.txt")
-  print("")
-  p("---== AD BREAK INITIALIZED ==---")
-  p("You may continue your program in 5")
-  wait(1)
-  p("You may continue your program in 4")
-  wait(1)
-  p("You may continue your program in 3")
-  wait(1)
-  p("You may continue your program in 2")
-  wait(1)
-  p("You may continue your program in 1")
-  wait(1)
-  p("")
-  p("")
+  global adsallow
+  if adsallow:
+    space(15)
+    ads = 0
+    all = os.listdir("ads")
+    texts = [f for f in all if f.endswith('.txt')]
+    ads = len(texts)
+    printext(f"ads/ad{random.randint(1, ads)}.txt")
+    print("")
+    p("---== AD BREAK INITIALIZED ==---")
+    p("You may continue your program in 5")
+    wait(1)
+    p("You may continue your program in 4")
+    wait(1)
+    p("You may continue your program in 3")
+    wait(1)
+    p("You may continue your program in 2")
+    wait(1)
+    p("You may continue your program in 1")
+    wait(1)
+    p("")
+    p("")
   
 
 printext("icon.txt")
@@ -80,7 +86,7 @@ while command != "exit!":
   7: 67!!!""")
         command = str(input("calculator>>> "))
         if command == "6" or command == "7":
-          for x in range(random.randint(10, 100)): p("67!!")
+          for x in range(random.randint(10, 100)): p("67!!"); waitf(0.01)
         elif command == "5": mode = "home"
         else:
           if command == "1" or command == "2" or command == "3" or command == "4":
