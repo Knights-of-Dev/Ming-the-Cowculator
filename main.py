@@ -83,13 +83,14 @@ while command != "exit!":
   4: mmuullttiippllyy
   5: exit
   6: 67!!!
-  7: 67!!!""")
+  7: 67!!!
+  8: square rooooot""")
         command = str(input("calculator>>> "))
         if command == "6" or command == "7":
           for x in range(random.randint(10, 100)): p("67!!"); waitf(0.01)
         elif command == "5": mode = "home"
         else:
-          if command == "1" or command == "2" or command == "3" or command == "4":
+          if command == "1" or command == "2" or command == "3" or command == "4" or command == "8":
             mode = "calc.inner"
             cmode = command
           else:
@@ -97,9 +98,16 @@ while command != "exit!":
       case "calc.inner":
         one = float(input("give me the first number >>> "))
         two = float(input("give me the second number >>> "))
-        modekey = ["undefined", "ADD", "SUBTRACT", "DIVIDE", "MULTIPLY"]
+        reccommend = {
+          "1": [2, 3, 4],
+          "2": [1, 4, 8],
+          "3": [8],
+          "4": [3, 1, 4, 8],
+          "8": [3, 1, 4, 6]
+        }
+        modekey = ["undefined", "ADD", "SUBTRACT", "DIVIDE", "MULTIPLY", "undefined", "SIXSEVENIFY", "SIXSEVENIFY", "SQUAREROOT"]
         if (random.randint(0, 1) == 1) or (one == two):
-          p(f"Hmm. It seems that your current mode is {modekey[int(cmode)]}. Did you mean to do {modekey[random.randint(1, 4)]}?")
+          p(f"Hmm. It seems that your current mode is {modekey[int(cmode)]}. Did you mean to do {modekey[random.choice(reccommend[cmode])]}?")
           sleep(2)
         else:
           match cmode:
@@ -114,9 +122,15 @@ while command != "exit!":
                 print(f"{one} DIVIDED BY {two} IS {one / two}")
             case "4":
               print(f"{one} TIMES {two} IS {one * two}")
+            case "8":
+              if one < 0 or two < 0:
+                print("stupid")
+              else:
+                print(f"SQUARE ROOT OF {one} IS {one ** 0.5}")
+                print(f"SQUARE ROOT OF {two} IS {two ** 0.5}")
             case _:
               print(f"{one}{two}")
-          wait(4)
+          wait(2)
           mode = "home"
       case _:
         p("wtf")
