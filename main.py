@@ -3,7 +3,7 @@ from time import sleep
 import os
 
 global ads
-adsallow = False
+adsallow = True
 
 def p(j):
   print(j)
