@@ -6,6 +6,26 @@ from broadcast import emitter
 global ads
 adsallow = True
 
+def intify(b):
+  if b is float or b is int:
+    return(int(b))
+  else: return 0
+
+def boolify(a):
+  if a == "True" or a == "true" or a == "1" or a == True or a == 1 or a == 1.0: return True
+  else: return False
+
+def floatify(s):
+  if s is int:
+    return(float(s))
+  elif s is bool:
+    if s: return 1.0
+    else: return 0.0
+  elif s is str:
+    if boolify(s): return 1.0
+    else: return 0.0
+  else: return 0
+
 def p(j):
   print(j)
 
