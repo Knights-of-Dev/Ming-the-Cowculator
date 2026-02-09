@@ -89,7 +89,7 @@ if __name__ == "__main__":
               ad()
               break
             case _:
-              wait(1)
+              waitf(0.5)
               if not recog: p("That command doesnt exist.")
         case "calc":
           p("""choose a mode:
