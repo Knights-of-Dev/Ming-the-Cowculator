@@ -1,6 +1,8 @@
+import importlib
 import random
 from time import sleep
 import os
+from broadcast import emitter
 
 global ads
 adsallow = True
@@ -22,10 +24,16 @@ def printext(w: str):
   with open(w, 'r', encoding='utf-8', errors='ignore') as f :
     print(f.read())
 
-def scanfor(folder: str, ext: str):
+def scanfor(folder: str, ext: str, mode="c"):
   all = os.listdir(folder)
   j = [f for f in all if f.endswith(ext)]
-  return len(j)
+  match mode:
+    case "c":
+      return len(j)
+    case "l":
+      return j
+    case _:
+      return 0
 
 def ad():
   global adsallow
@@ -50,16 +58,23 @@ def ad():
     p("")
   
 def modcheck():
+  p("")
   print("Scanning for mods...")
   mods = 0
-  mods = scanfor("mods", ".py")
-  match mods:
+  mods = scanfor("mods", ".py", "l")
+  match len(mods):
     case 0:
       p("No mods detected.")
     case 1:
-      p("1 mod detected.")
+      p("1 mod detected:")
+      p(f"> {mods[0]}")
     case _:
-      p(f"{mods} mods detected.")
+      p(f"{len(mods)} mods detected:")
+      for x in mods:
+        globals()[f"{x[0:-3]}"] = importlib.import_module(f"mods.{x[0:-3]}")
+        importlib.getattr(globals()[f"{x[0:-3]}"], "name", f"Unnamed mod: {x}")
+        p(f"> {x}")
+  p("")
 
 
 printext("icon.txt")
@@ -68,6 +83,8 @@ command = ""
 mode = "home"
 
 already = False
+
+modcheck()
 
 while command != "exit!":
   if random.randint(0, 3) == 3 and already:

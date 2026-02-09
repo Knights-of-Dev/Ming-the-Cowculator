@@ -1,5 +1,6 @@
 All commands:
-- help
-- calc
-- info
-- exit
+- help [gives you this]
+- calc [gives you a calcumalator]
+- info [gives you the version]
+- more [for mods]
+- exit [watch an ad and exit]
