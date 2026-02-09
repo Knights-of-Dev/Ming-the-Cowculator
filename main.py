@@ -67,48 +67,55 @@ def modcheck():
       p("No mods detected.")
     case 1:
       p("1 mod detected:")
-      p(f"> {mods[0]}")
+      x = mods[0]
+      globals()[f"{x[0:-3]}"] = importlib.import_module(f"mods.{x[0:-3]}")
+      p(f"> {getattr(globals()[f"{x[0:-3]}"], "name", f"Unnamed mod: {x}")}")
+      
     case _:
       p(f"{len(mods)} mods detected:")
       for x in mods:
         globals()[f"{x[0:-3]}"] = importlib.import_module(f"mods.{x[0:-3]}")
-        importlib.getattr(globals()[f"{x[0:-3]}"], "name", f"Unnamed mod: {x}")
-        p(f"> {x}")
+        p(f"> {getattr(globals()[f"{x[0:-3]}"], "name", f"Unnamed mod: {x}")}")
   p("")
 
+if __name__ == "__main__":
+  printext("icon.txt")
 
-printext("icon.txt")
+  command = ""
+  mode = "home"
 
-command = ""
-mode = "home"
+  already = False
 
-already = False
+  recog = False
 
-modcheck()
+  modcheck()
 
-while command != "exit!":
-  if random.randint(0, 3) == 3 and already:
-    print("I don't feel like sending that right now.")
-  else:
-    match mode:
-      case "home":
-        already = True
-        command = str(input("home>>> "))
-        match command:
-          case "help":
-            printext("help.txt")
-          case "info":
-            printext('about.txt')
-          case "calc":
-            mode = "calc"
-            p("calculator mode!")
-          case "exit":
-            ad()
-            break
-          case _:
-            p("That command doesnt exist.")
-      case "calc":
-        p("""choose a mode:
+  while command != "exit!":
+    if random.randint(0, 3) == 3 and already:
+      print("I don't feel like sending that right now.")
+    else:
+      match mode:
+        case "home":
+          already = True
+          command = str(input("home>>> "))
+          recog = False
+          emitter.broadcast("sent.home", command)
+          match command:
+            case "help":
+              printext("help.txt")
+            case "info":
+              printext('about.txt')
+            case "calc":
+              mode = "calc"
+              p("calculator mode!")
+            case "exit":
+              ad()
+              break
+            case _:
+              wait(1)
+              if not recog: p("That command doesnt exist.")
+        case "calc":
+          p("""choose a mode:
   1: add
   2: subtrackt
   3: di vid e
@@ -117,57 +124,57 @@ while command != "exit!":
   6: 67!!!
   7: 67!!!
   8: square rooooot""")
-        command = str(input("calculator>>> "))
-        if command == "6" or command == "7":
-          for x in range(random.randint(10, 100)): p("67!!"); waitf(0.01)
-        elif command == "5": mode = "home"
-        else:
-          if command == "1" or command == "2" or command == "3" or command == "4" or command == "8":
-            mode = "calc.inner"
-            cmode = command
+          command = str(input("calculator>>> "))
+          if command == "6" or command == "7":
+            for x in range(random.randint(10, 100)): p("67!!"); waitf(0.01)
+          elif command == "5": mode = "home"
           else:
-            p("stupid")
-      case "calc.inner":
-        one = float(input("give me the first number >>> "))
-        two = float(input("give me the second number >>> "))
-        reccommend = {
-          "1": [2, 3, 4],
-          "2": [1, 4, 8],
-          "3": [8],
-          "4": [3, 1, 4, 8],
-          "8": [3, 1, 4, 6]
-        }
-        modekey = ["undefined", "ADD", "SUBTRACT", "DIVIDE", "MULTIPLY", "undefined", "SIXSEVENIFY", "SIXSEVENIFY", "SQUAREROOT"]
-        if (random.randint(0, 1) == 1) or (one == two):
-          p(f"Hmm. It seems that your current mode is {modekey[int(cmode)]}. Did you mean to do {modekey[random.choice(reccommend[cmode])]}?")
-          sleep(2)
-        else:
-          match cmode:
-            case "1":
-              print(f"{one} PLUS {two} IS {one + two}")
-            case "2":
-              print(f"{one} MINUS {two} IS {one - two}")
-            case "3":
-              if two == 0:
-                print("stupid")
-              else:
-                print(f"{one} DIVIDED BY {two} IS {one / two}")
-            case "4":
-              print(f"{one} TIMES {two} IS {one * two}")
-            case "8":
-              if one < 0 or two < 0:
-                print("stupid")
-              else:
-                print(f"SQUARE ROOT OF {one} IS {one ** 0.5}")
-                print(f"SQUARE ROOT OF {two} IS {two ** 0.5}")
-            case _:
-              print(f"{one}{two}")
-          wait(2)
-          mode = "home"
-      case _:
-        p("wtf")
-  if random.randint(0, 4) == 1: ad()
-  if random.randint(0, 2) == 1: p("Mooooo!")
+            if command == "1" or command == "2" or command == "3" or command == "4" or command == "8":
+              mode = "calc.inner"
+              cmode = command
+            else:
+              p("stupid")
+        case "calc.inner":
+          one = float(input("give me the first number >>> "))
+          two = float(input("give me the second number >>> "))
+          reccommend = {
+            "1": [2, 3, 4],
+            "2": [1, 4, 8],
+            "3": [8],
+            "4": [3, 1, 4, 8],
+            "8": [3, 1, 4, 6]
+          }
+          modekey = ["undefined", "ADD", "SUBTRACT", "DIVIDE", "MULTIPLY", "undefined", "SIXSEVENIFY", "SIXSEVENIFY", "SQUAREROOT"]
+          if (random.randint(0, 1) == 1) or (one == two):
+            p(f"Hmm. It seems that your current mode is {modekey[int(cmode)]}. Did you mean to do {modekey[random.choice(reccommend[cmode])]}?")
+            sleep(2)
+          else:
+            match cmode:
+              case "1":
+                print(f"{one} PLUS {two} IS {one + two}")
+              case "2":
+                print(f"{one} MINUS {two} IS {one - two}")
+              case "3":
+                if two == 0:
+                  p("stupid")
+                else:
+                  print(f"{one} DIVIDED BY {two} IS {one / two}")
+              case "4":
+                print(f"{one} TIMES {two} IS {one * two}")
+              case "8":
+                if one < 0 or two < 0:
+                  print("stupid")
+                else:
+                  print(f"SQUARE ROOT OF {one} IS {one ** 0.5}")
+                  print(f"SQUARE ROOT OF {two} IS {two ** 0.5}")
+              case _:
+                print(f"{one}{two}")
+            wait(2)
+            mode = "home"
+        case _:
+          p("wtf")
+    if random.randint(0, 4) == 1: ad()
+    if random.randint(0, 2) == 1: p("Mooooo!")
 
-print("thank you for using MING!")
-wait(1)
+  print("thank you for using MING!")
+  wait(1)
