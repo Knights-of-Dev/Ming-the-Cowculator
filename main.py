@@ -22,10 +22,10 @@ def printext(w: str):
   with open(w, 'r', encoding='utf-8', errors='ignore') as f :
     print(f.read())
 
-def scanfor(name: str, ext: str):
-  all = os.listdir("ads")
-  j = [f for f in all if f.endswith('.txt')]
-  return len(js)
+def scanfor(folder: str, ext: str):
+  all = os.listdir(folder)
+  j = [f for f in all if f.endswith(ext)]
+  return len(j)
 
 def ad():
   global adsallow
