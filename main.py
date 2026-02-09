@@ -95,6 +95,7 @@ if __name__ == "__main__":
         case "home":
           already = True
           command = str(input("home>>> "))
+          if random.randint(0, 4) == 1: ad()
           recog = False
           emitter.broadcast("sent.home", command)
           match command:
@@ -122,6 +123,7 @@ if __name__ == "__main__":
   7: 67!!!
   8: square rooooot""")
           command = str(input("calculator>>> "))
+          if random.randint(0, 4) == 1: ad()
           if command == "6" or command == "7":
             for x in range(random.randint(10, 100)): p("67!!"); waitf(0.01)
           elif command == "5": mode = "home"
@@ -170,7 +172,6 @@ if __name__ == "__main__":
             mode = "home"
         case _:
           p("wtf")
-    if random.randint(0, 4) == 1: ad()
     if random.randint(0, 2) == 1: p("Mooooo!")
 
   print("thank you for using MING!")
