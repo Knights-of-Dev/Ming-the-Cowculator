@@ -1,4 +1,3 @@
-import importlib
 import random
 from time import sleep
 import os
@@ -57,26 +56,6 @@ def ad():
     p("")
     p("")
   
-def modcheck():
-  p("")
-  print("Scanning for mods...")
-  mods = 0
-  mods = scanfor("mods", ".py", "l")
-  match len(mods):
-    case 0:
-      p("No mods detected.")
-    case 1:
-      p("1 mod detected:")
-      x = mods[0]
-      globals()[f"{x[0:-3]}"] = importlib.import_module(f"mods.{x[0:-3]}")
-      p(f"> {getattr(globals()[f"{x[0:-3]}"], "name", f"Unnamed mod: {x}")}")
-      
-    case _:
-      p(f"{len(mods)} mods detected:")
-      for x in mods:
-        globals()[f"{x[0:-3]}"] = importlib.import_module(f"mods.{x[0:-3]}")
-        p(f"> {getattr(globals()[f"{x[0:-3]}"], "name", f"Unnamed mod: {x}")}")
-  p("")
 
 if __name__ == "__main__":
   printext("icon.txt")
@@ -87,8 +66,6 @@ if __name__ == "__main__":
   already = False
 
   recog = False
-
-  modcheck()
 
   while command != "exit!":
     if random.randint(0, 3) == 3 and already:
