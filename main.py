@@ -32,9 +32,7 @@ def ad():
   if adsallow:
     space(15)
     ads = 0
-    all = os.listdir("ads")
-    texts = [f for f in all if f.endswith('.txt')]
-    ads = len(texts)
+    ads = scanfor("ads", ".txt")
     printext(f"ads/ad{random.randint(1, ads)}.txt")
     print("")
     p("---== AD BREAK INITIALIZED ==---")
@@ -51,6 +49,18 @@ def ad():
     p("")
     p("")
   
+def modcheck():
+  print("Scanning for mods...")
+  mods = 0
+  mods = scanfor("mods", ".py")
+  match mods:
+    case 0:
+      p("No mods detected.")
+    case 1:
+      p("1 mod detected.")
+    case _:
+      p(f"{mods} mods detected.")
+
 
 printext("icon.txt")
 
