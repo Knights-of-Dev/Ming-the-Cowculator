@@ -8,10 +8,10 @@ global ads
 adsallow = True
 
 def intify(b):
-  if b is float or b is int: return(int(b))
-  elif b is str: 
+  if type(b) == float or type(b) == int: return(int(b))
+  elif type(b) == str: 
     if re.fullmatch(r"^[1234567890]+$", b): return(int(b))
-    else: return 0
+    elif re.fullmatch(r"^[1234567890.]+$", b): return(int(float(b)))
   else: return 0
 
 def boolify(a):
@@ -19,14 +19,13 @@ def boolify(a):
   else: return False
 
 def floatify(s):
-  if s is int:
+  if type(s) == int:
     return(float(s))
-  elif s is bool:
+  elif type(s) == bool:
     if s: return 1.0
     else: return 0.0
-  elif s is str:
-    if boolify(s): return 1.0
-    else: return 0.0
+  elif type(s) == str:
+    return intify(s)
   else: return 0.0
 
 def p(j):
