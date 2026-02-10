@@ -39,6 +39,14 @@ def ad():
 
 def process(cmd: str):
     match cmd:
+      case "help":
+        p("""functions:
+> SIN [sine]
+> COS [cosine]
+> TAN [tangent]
+> FAC [factorial]
+> EXT [exit]
+""")
       case _:
         p("Advanced Mode doesnt know what the hell you mean by that.")
 
