@@ -2,13 +2,16 @@ import random
 from time import sleep
 import os
 from broadcast import emitter
+import re
 
 global ads
 adsallow = True
 
 def intify(b):
-  if b is float or b is int:
-    return(int(b))
+  if b is float or b is int: return(int(b))
+  elif b is str: 
+    if re.fullmatch(r"^[1234567890]+$", b): return(int(b))
+    else: return 0
   else: return 0
 
 def boolify(a):
@@ -24,7 +27,7 @@ def floatify(s):
   elif s is str:
     if boolify(s): return 1.0
     else: return 0.0
-  else: return 0
+  else: return 0.0
 
 def p(j):
   print(j)
@@ -36,8 +39,7 @@ def waitf(h: float):
   sleep(h)
 
 def space(num: int):
-  for x in range(0, num):
-    p("")
+  for x in range(0, num): p("")
 
 def printext(w: str):
   with open(w, 'r', encoding='utf-8', errors='ignore') as f :
@@ -47,12 +49,9 @@ def scanfor(folder: str, ext: str, mode="c"):
   all = os.listdir(folder)
   j = [f for f in all if f.endswith(ext)]
   match mode:
-    case "c":
-      return len(j)
-    case "l":
-      return j
-    case _:
-      return 0
+    case "c": return len(j)
+    case "l": return j
+    case _: return 0
 
 def ad():
   global adsallow
@@ -63,16 +62,11 @@ def ad():
     printext(f"ads/ad{random.randint(1, ads)}.txt")
     print("")
     p("---== AD BREAK INITIALIZED ==---")
-    p("You may continue your program in 5")
-    wait(1)
-    p("You may continue your program in 4")
-    wait(1)
-    p("You may continue your program in 3")
-    wait(1)
-    p("You may continue your program in 2")
-    wait(1)
-    p("You may continue your program in 1")
-    wait(1)
+    p("You may continue your program in 5"); wait(1)
+    p("You may continue your program in 4"); wait(1)
+    p("You may continue your program in 3"); wait(1)
+    p("You may continue your program in 2"); wait(1)
+    p("You may continue your program in 1"); wait(1)
     p("")
     p("")
   
@@ -134,8 +128,8 @@ if __name__ == "__main__":
             else:
               p("stupid")
         case "calc.inner":
-          one = float(input("give me the first number >>> "))
-          two = float(input("give me the second number >>> "))
+          one = floatify(input("give me the first number >>> "))
+          two = floatify(input("give me the second number >>> "))
           reccommend = {
             "1": [2, 3, 4],
             "2": [1, 4, 8],
