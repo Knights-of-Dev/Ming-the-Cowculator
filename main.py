@@ -99,6 +99,8 @@ if __name__ == "__main__":
             case "calc":
               mode = "calc"
               p("calculator mode!")
+            case "adva":
+              p("im not done with that yet.")
             case "exit":
               ad()
               break
