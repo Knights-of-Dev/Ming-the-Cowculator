@@ -35,17 +35,13 @@ def floatify(s):
     return intify(s)
   else: return 0.0
 
-def p(j):
-  print(j)
+def p(j): print(j)
 
-def wait(n: int):
-  sleep(n)
+def wait(n: int): sleep(n)
 
-def waitf(h: float):
-  sleep(h)
+def waitf(h: float): sleep(h)
 
-def space(num: int):
-  for x in range(0, num): p("")
+def space(num: int): for x in range(0, num): p("")
 
 def printext(w: str):
   with open(w, 'r', encoding='utf-8', errors='ignore') as f :
