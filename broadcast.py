@@ -13,7 +13,7 @@ class BroadcastManager:
         # send it
         if message_name in self.listeners:
             for callback in self.listeners[message_name]:
-                if data is not None:
+                if type(data) != None:
                     callback(data)
                 else:
                     callback()

@@ -141,6 +141,7 @@ if __name__ == "__main__":
             p(f"Hmm. It seems that your current mode is {modekey[int(cmode)]}. Did you mean to do {modekey[random.choice(reccommend[cmode])]}?")
             sleep(2)
           else:
+            if random.randint(0, 4) == 1: ad()
             match cmode:
               case "1":
                 print(f"{one} PLUS {two} IS {one + two}")
