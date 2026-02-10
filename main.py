@@ -3,6 +3,7 @@ from time import sleep
 import os
 from broadcast import emitter
 import re
+import advanced
 
 global ads
 adsallow = True
@@ -100,6 +101,7 @@ if __name__ == "__main__":
               mode = "calc"
               p("calculator mode!")
             case "adva":
+              emitter.broadcast("advanced.sent", input("what: "))
               p("im not done with that yet.")
             case "exit":
               ad()

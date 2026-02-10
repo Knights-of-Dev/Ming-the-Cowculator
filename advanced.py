@@ -1,0 +1,45 @@
+from broadcast import emitter
+
+import main
+
+global ads
+adsallow = True
+
+def p(j):
+  print(j)
+
+def space(num: int):
+  for x in range(0, num): p("")
+
+def scanfor(folder: str, ext: str, mode="c"):
+  all = os.listdir(folder)
+  j = [f for f in all if f.endswith(ext)]
+  match mode:
+    case "c": return len(j)
+    case "l": return j
+    case _: return 0
+
+def ad():
+  global adsallow
+  if adsallow:
+    space(15)
+    ads = 0
+    ads = scanfor("ads", ".txt")
+    printext(f"ads/ad{random.randint(1, ads)}.txt")
+    print("")
+    p("---== AD BREAK INITIALIZED ==---")
+    p("You may continue your program in 5"); wait(1)
+    p("You may continue your program in 4"); wait(1)
+    p("You may continue your program in 3"); wait(1)
+    p("You may continue your program in 2"); wait(1)
+    p("You may continue your program in 1"); wait(1)
+    p("")
+    p("")
+
+
+def process(cmd: str):
+    match cmd:
+      case _:
+        p("Advanced Mode doesnt know what the hell you mean by that.")
+
+emitter.on_message("advanced.sent", process)
