@@ -1,6 +1,8 @@
 from broadcast import emitter
 
 import main
+import math
+import random
 
 global ads
 adsallow = True
@@ -47,7 +49,30 @@ def process(cmd: str):
 > FAC [factorial]
 > EXT [exit]
 """)
+      case "SIN":
+        munber = main.floatify(input("Give me the nuber: "))
+        if random.randint(0, 3) == 1: ad()
+        print(math.sin(munber))
+        main.wait(2)
+      case "COS":
+        munber = main.floatify(input("Give me the nuber: "))
+        if random.randint(0, 3) == 1: ad()
+        print(math.cos(munber))
+        main.wait(2)
+      case "TAN":
+        munber = main.floatify(input("Give me the nuber: "))
+        if random.randint(0, 3) == 1: ad()
+        print(math.tan(munber))
+        main.wait(2)
+      case "FAC":
+        munber = main.floatify(input("Give me the nuber: "))
+        if random.randint(0, 3) == 1: ad()
+        if munber < 0: p("stupid (but advanced)")
+        else: print(math.factorial(munber))
+        main.wait(2)
+      case "EXT":
+        main.mode = "home"
       case _:
-        p("Advanced Mode doesnt know what the hell you mean by that.")
+        p("Advanced Mode doesnt know what the heck (hell) you mean by that.")
 
 emitter.on_message("advanced.sent", process)

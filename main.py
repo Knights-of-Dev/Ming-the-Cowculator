@@ -101,8 +101,7 @@ if __name__ == "__main__":
               mode = "calc"
               p("calculator mode!")
             case "adva":
-              emitter.broadcast("advanced.sent", input("what: "))
-              p("im not done with that yet.")
+              mode = "advanced"
             case "exit":
               ad()
               break
@@ -168,6 +167,8 @@ if __name__ == "__main__":
                 print(f"{one}{two}")
             wait(2)
             mode = "home"
+        case "advanced":
+          emitter.broadcast("advanced.sent", input("advanced>>>: "))
         case _:
           p("wtf")
     if random.randint(0, 2) == 1: p("Mooooo!")
