@@ -3,6 +3,7 @@ from broadcast import emitter
 import main
 import math
 import random
+import os
 
 global ads
 adsallow = True
@@ -40,6 +41,7 @@ def ad():
 
 
 def process(cmd: str):
+    if random.randint(0, 3) == 1: ad()
     match cmd:
       case "help":
         p("""functions:
@@ -72,6 +74,7 @@ def process(cmd: str):
         main.wait(2)
       case "EXT":
         main.mode = "home"
+        emitter.broadcast("modehome")
       case _:
         p("Advanced Mode doesnt know what the heck (hell) you mean by that.")
 

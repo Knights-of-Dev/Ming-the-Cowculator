@@ -8,6 +8,12 @@ import advanced
 global ads
 adsallow = True
 
+def h(j):
+  global mode
+  mode = "home"
+
+emitter.on_message("modehome", h)
+
 def intify(b):
   if type(b) == float or type(b) == int: return(int(b))
   elif type(b) == str: 
@@ -75,6 +81,7 @@ if __name__ == "__main__":
   printext("icon.txt")
 
   command = ""
+  global mode
   mode = "home"
 
   already = False
@@ -168,7 +175,7 @@ if __name__ == "__main__":
             wait(2)
             mode = "home"
         case "advanced":
-          emitter.broadcast("advanced.sent", input("advanced>>>: "))
+          emitter.broadcast("advanced.sent", input("advanced>>> "))
         case _:
           p("wtf")
     if random.randint(0, 2) == 1: p("Mooooo!")
