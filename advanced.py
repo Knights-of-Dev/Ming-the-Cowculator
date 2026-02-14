@@ -52,22 +52,22 @@ def process(cmd: str):
 > EXT [exit]
 """)
       case "SIN":
-        munber = main.floatify(input("Give me the nuber: "))
+        munber = main.floatify(input("畀個號碼我: "))
         if random.randint(0, 3) == 1: ad()
         print(math.sin(munber))
         main.wait(2)
       case "COS":
-        munber = main.floatify(input("Give me the nuber: "))
+        munber = main.floatify(input("畀個號碼我: "))
         if random.randint(0, 3) == 1: ad()
         print(math.cos(munber))
         main.wait(2)
       case "TAN":
-        munber = main.floatify(input("Give me the nuber: "))
+        munber = main.floatify(input("畀個號碼我: "))
         if random.randint(0, 3) == 1: ad()
         print(math.tan(munber))
         main.wait(2)
       case "FAC":
-        munber = main.floatify(input("Give me the nuber: "))
+        munber = main.floatify(input("畀個號碼我: "))
         if random.randint(0, 3) == 1: ad()
         if munber < 0: p("stupid (but advanced)")
         else: print(math.factorial(munber))
@@ -76,6 +76,6 @@ def process(cmd: str):
         main.mode = "home"
         emitter.broadcast("modehome")
       case _:
-        p("Advanced Mode doesnt know what the heck (hell) you mean by that.")
+        p("進階模式唔知你講緊乜。")
 
 emitter.on_message("advanced.sent", process)
