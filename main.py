@@ -63,12 +63,12 @@ def ad():
     ads = scanfor("ads", ".txt")
     printext(f"ads/ad{random.randint(1, ads)}.txt")
     print("")
-    p("---== AD BREAK INITIALIZED ==---")
-    p("You may continue your program in 5"); wait(1)
-    p("You may continue your program in 4"); wait(1)
-    p("You may continue your program in 3"); wait(1)
-    p("You may continue your program in 2"); wait(1)
-    p("You may continue your program in 1"); wait(1)
+    p("---== 廣告時間 ==---")
+    p("你可以喺 [5] 秒內輸入。"); wait(1)
+    p("你可以喺 [4] 秒內輸入。"); wait(1)
+    p("你可以喺 [3] 秒內輸入。"); wait(1)
+    p("你可以喺 [2] 秒內輸入。"); wait(1)
+    p("你可以喺 [1] 秒內輸入。"); wait(1)
     p("")
     p("")
   
@@ -110,9 +110,9 @@ if __name__ == "__main__":
               break
             case _:
               waitf(0.5)
-              if not recog: p("That command doesnt exist.")
+              if not recog: p("你講緊乜嘢?")
         case "calc":
-          p("""choose a mode:
+          p("""請選擇一個模式:
   1: add
   2: subtrackt
   3: di vid e
@@ -121,7 +121,7 @@ if __name__ == "__main__":
   6: 67!!!
   7: 67!!!
   8: square rooooot""")
-          command = str(input("calculator>>> "))
+          command = str(input("計算機>>> "))
           if random.randint(0, 4) == 1: ad()
           if command == "6" or command == "7":
             for x in range(random.randint(10, 100)): p("67!!"); waitf(0.01)
@@ -176,5 +176,5 @@ if __name__ == "__main__":
           p("wtf")
     if random.randint(0, 2) == 1: p("Mooooo!")
 
-  print("thank you for using MING!")
+  print("多謝你用 MING !")
   wait(1)
